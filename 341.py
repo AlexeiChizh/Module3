@@ -1,6 +1,8 @@
-# data = {'login': 'psw'}
-# with open('reg.json', 'w') as f:
-#   json.dump(data, f)
+import json
+
+data = {'login': 'psw'}
+with open('reg.json', 'a') as f:
+   json.dump(data, f)
 
 
 def reg(login, psw):
@@ -17,7 +19,7 @@ def reg(login, psw):
 def log_in(login, psw):
     with open('reg.json', 'r') as f:
         data = json.load(f)
-    if login in data.keys():
+    if login in data.keys() and psw in data.values():
         print('Успешный вход!!!')
     else:
         print('Такого логина или пароля не существует!')
