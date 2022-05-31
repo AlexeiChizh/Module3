@@ -14,15 +14,15 @@ def reg(login, psw):
         data[login] = psw
         with open('reg.json', 'w') as f:
            json.dump(data,f)
-        print('Регистрация прошла успешно!')
+        print(' Регистрация прошла успешно!')
 
 def log_in(login, psw):
     with open('reg.json', 'r') as f:
         data = json.load(f)
-    if login in data.keys() and psw in data.values():
-        print('Успешный вход!!!')
+    if (login, psw) not in data.items():
+        print(' Такого логина или пароля не существует!')
     else:
-        print('Такого логина или пароля не существует!')
+        print(' Успешный вход!!!')
 
 while True:
     break_point = input('СТОП?   ')
